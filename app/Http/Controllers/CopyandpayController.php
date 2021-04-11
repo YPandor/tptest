@@ -29,11 +29,6 @@ class CopyandpayController extends Controller
         }
         curl_close($ch);
         $responseData = json_decode($responseData)->id;
-        //return view('payment', compact($responseData));
-        //return $responseData;
-        //return view('payment')->with('responseData', '$responseData');
-        //return view("payment", compact('responseData'));
         return view('payment', ['checkoutId' => $responseData]);
     }
-    //$responseData = request();
 }

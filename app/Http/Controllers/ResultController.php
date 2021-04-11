@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\PreviousPayments;
 use Illuminate\Routing\Controller;
 
 
@@ -25,10 +26,14 @@ class ResultController extends Controller
         }
         curl_close($ch);
         $responseData = json_decode($responseData)->result->description;
-        //$responseData = "hello";
         return view('result', ['resultData' => $responseData]);
         //return $responseData;
     }
-    //$responseData = request();
+
+    public function getAllPayments() {
+        $payments = PreviousPayments::all();
+        //return $payments;
+        return view('previous', ['payments' => $payments]);
+    }
 }
 
